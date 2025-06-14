@@ -18,9 +18,9 @@ const MonetagScript = () => {
 
     // Load scripts for different ad zones
     // These zone IDs will be replaced with actual Monetag zone IDs
-    loadMonetagScript('MONETAG_ZONE_1'); // Top banner
-    loadMonetagScript('MONETAG_ZONE_2'); // Middle banner  
-    loadMonetagScript('MONETAG_ZONE_3'); // Bottom banner
+    loadMonetagScript('9449270'); // TopBanner
+    loadMonetagScript('9449276'); // CenterBlock
+    loadMonetagScript('9449279'); // BottomBanner
 
   }, []);
 
