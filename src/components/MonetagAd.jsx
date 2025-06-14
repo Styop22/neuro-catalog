@@ -1,38 +1,41 @@
-// Monetag Ad Component (Fixed and Cleaned)
 import React, { useEffect, useRef } from 'react';
 
-const MonetagAd = ({ zoneId, adType = 'inpage', adStyle = {} }) => {
+const MonetagAd = ({ zoneId, adStyle = {} }) => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    if (!zoneId || adType !== 'inpage') return;
+    if (!zoneId || !adRef.current) return;
 
     const container = adRef.current;
-    if (!container) return;
 
-    // ЧИСТИМ ПЕРЕД ЗАГРУЗКОЙ!
+    // Удаляем старый контент
     container.innerHTML = '';
+
+    const adDiv = document.createElement('div');
+    adDiv.id = `monetag-inpage-${zoneId}`;
+    adDiv.className = 'monetag-inpage-banner';
+    adDiv.setAttribute('data-zone', zoneId);
+    container.appendChild(adDiv);
 
     const script = document.createElement('script');
     script.src = `https://baithoph.net/400/${zoneId}`;
     script.async = true;
     script.setAttribute('data-zone', zoneId);
     script.setAttribute('data-cfasync', 'false');
-
     container.appendChild(script);
-  }, [zoneId, adType]);
+  }, [zoneId]);
 
   return (
     <div
       ref={adRef}
       className="monetag-container"
       style={{
-        minHeight: '90px',
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        ...adStyle,
+        minHeight: '90px',
+        ...adStyle
       }}
     />
   );
