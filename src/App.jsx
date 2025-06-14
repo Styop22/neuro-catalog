@@ -368,7 +368,7 @@ const App = () => {
           <div className="my-8">
             <MonetagAd 
               zoneId="9449275" 
-              adType="vignette"
+              adType="inpage"
               adStyle={{ minHeight: '250px' }}
             />
           </div>
@@ -412,7 +412,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MonetagAd 
             zoneId="9449278" 
-            adType="vignette"
+            adType="inpage"
             adStyle={{ minHeight: '90px' }}
           />
         </div>
