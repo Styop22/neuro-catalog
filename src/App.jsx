@@ -127,7 +127,7 @@ const App = () => {
           {/* Monetag Ad - Top Banner */}
           <div className="my-8">
             <MonetagAd 
-              zoneId="9449627" 
+              zoneId="9449269" 
               adType="inpage"
               adStyle={{ minHeight: '90px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
             />
