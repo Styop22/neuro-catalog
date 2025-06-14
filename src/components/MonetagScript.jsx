@@ -9,7 +9,7 @@ const MonetagScript = () => {
         const script = document.createElement('script');
         script.id = scriptId;
         script.async = true;
-        script.src = `https://alwingulla.com/88/tag.min.js`; // ✅ официальный рабочий скрипт
+        script.src = `https://baithoph.net/400/${zoneId}`; // ✅ официальный рабочий скрипт
         script.setAttribute('data-zone', zoneId);
         script.setAttribute('data-cfasync', 'false');
         document.head.appendChild(script);
