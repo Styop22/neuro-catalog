@@ -199,3 +199,240 @@ body {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
+
+/* Mobile-first responsive improvements */
+@media (max-width: 768px) {
+  /* Header improvements for mobile */
+  .mobile-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .mobile-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  /* Search and filters for mobile */
+  .mobile-search-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .mobile-search-input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .mobile-category-select {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  
+  /* Grid improvements for mobile */
+  .mobile-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  /* Card improvements for mobile */
+  .mobile-card {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  .mobile-card-title {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-card-description {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .mobile-card-category {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  /* Monetag ads for mobile */
+  .mobile-monetag-container {
+    margin: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Pagination for mobile */
+  .mobile-pagination {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .mobile-pagination-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .mobile-pagination-button {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Hero section for mobile */
+  .mobile-hero {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .mobile-hero-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-hero-description {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Stats section for mobile */
+  .mobile-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .mobile-stat-card {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  
+  .mobile-stat-number {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  
+  .mobile-stat-label {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+  /* Larger touch targets */
+  button, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for touch */
+  .touch-spacing {
+    margin: 0.5rem 0;
+  }
+  
+  /* Improved text readability on mobile */
+  .mobile-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Better contrast for mobile */
+  .mobile-contrast {
+    color: #1f2937;
+  }
+  
+  .dark .mobile-contrast {
+    color: #f9fafb;
+  }
+}
+
+/* Vignette Banner specific styles */
+.vignette-banner {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.vignette-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  pointer-events: none;
+}
+
+.vignette-banner-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
+/* Mobile vignette banner */
+@media (max-width: 768px) {
+  .vignette-banner {
+    margin: 1rem;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+  
+  .vignette-banner-content {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* Enhanced mobile monetag containers */
+@media (max-width: 768px) {
+  .monetag-container {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    min-height: 120px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: 2px solid #e2e8f0;
+  }
+  
+  .dark .monetag-container {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #475569;
+  }
+  
+  .monetag-container:empty::before {
+    content: '📱 Բեռնվում է գովազդ...';
+    font-size: 1rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+  }
+  
+  .dark .monetag-container:empty::before {
+    color: #94a3b8;
+  }
+}
+

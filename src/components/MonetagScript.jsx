@@ -1,25 +1,57 @@
-// MonetagScript.jsx
+// MonetagScript.jsx - Обновленный скрипт для Vignette Banner
 import React, { useEffect } from 'react';
 
 const MonetagScript = () => {
   useEffect(() => {
-    // Удалим старый скрипт если есть
-    const existing = document.getElementById('monetag-global-script');
-    if (existing) existing.remove();
+    // Функция для загрузки Monetag скриптов
+    const loadMonetagScript = (zoneId) => {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = `https://baithoph.net/400/${zoneId}`;
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      script.setAttribute('data-zone', zoneId);
+      script.setAttribute('data-format', 'vignette');
+      document.head.appendChild(script);
+    };
 
-    const script = document.createElement('script');
-    script.id = 'monetag-global-script';
-    script.src = 'https://baithoph.net/tag.min.js';
-    script.async = true;
+    // Загружаем скрипты для всех зон (замените на ваши реальные Zone ID)
+    loadMonetagScript('MONETAG_ZONE_1'); // Верхний баннер
+    loadMonetagScript('MONETAG_ZONE_2'); // Средний баннер  
+    loadMonetagScript('MONETAG_ZONE_3'); // Нижний баннер
 
-    script.onload = () => {
-      // Вызываем обработку всех монетаг контейнеров
-      if (window.monetag) {
-        window.monetag.init();
+    // Добавляем основной скрипт Monetag
+    const mainScript = document.createElement('script');
+    mainScript.type = 'text/javascript';
+    mainScript.innerHTML = `
+      (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://baithoph.net/tag.min.js';
+        script.async = true;
+        script.setAttribute('data-cfasync', 'false');
+        document.head.appendChild(script);
+      })();
+    `;
+    document.head.appendChild(mainScript);
+
+    // Оптимизация для мобильных устройств
+    const optimizeForMobile = () => {
+      if (window.innerWidth <= 768) {
+        // Добавляем мета-тег для мобильной оптимизации
+        const metaTag = document.createElement('meta');
+        metaTag.name = 'monetag-mobile-optimized';
+        metaTag.content = 'true';
+        document.head.appendChild(metaTag);
       }
     };
 
-    document.head.appendChild(script);
+    optimizeForMobile();
+    window.addEventListener('resize', optimizeForMobile);
+
+    return () => {
+      window.removeEventListener('resize', optimizeForMobile);
+    };
   }, []);
 
   return null;

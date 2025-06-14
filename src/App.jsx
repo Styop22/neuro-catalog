@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Grid, List, Moon, Sun, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import './App.css';
 
@@ -7,6 +7,7 @@ import neuralNetworksData from './excel_data.json';
 
 // Monetag components
 import MonetagAd from './components/MonetagAd';
+import VignetteBannerAd from './components/VignetteBannerAd';
 import MonetagScript from './components/MonetagScript';
 
 const App = () => {
@@ -124,12 +125,17 @@ const App = () => {
             Գտեք ձեր նախագծի համար կատարյալ լուծումը։
           </p>
           
-          {/* Monetag Ad - Top Banner */}
+          {/* Vignette Banner Ad - Top */}
           <div className="my-8">
-            <MonetagAd 
-              zoneId="9449269" 
-              adType="inpage"
-              adStyle={{ minHeight: '90px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+            <VignetteBannerAd 
+              zoneId="MONETAG_ZONE_1" 
+              className="mobile-monetag-container"
+              adStyle={{ 
+                minHeight: '120px', 
+                backgroundColor: 'rgba(255,255,255,0.1)', 
+                borderRadius: '12px',
+                margin: '1rem 0'
+              }}
             />
           </div>
           
@@ -363,13 +369,16 @@ const App = () => {
           </div>
         )}
 
-        {/* Monetag Ad - Middle Banner */}
+        {/* Vignette Banner Ad - Middle */}
         {filteredData.length > 12 && (
           <div className="my-8">
-            <MonetagAd 
-              zoneId="9449275" 
-              adType="inpage"
-              adStyle={{ minHeight: '250px' }}
+            <VignetteBannerAd 
+              zoneId="MONETAG_ZONE_2" 
+              className="mobile-monetag-container"
+              adStyle={{ 
+                minHeight: '120px',
+                margin: '2rem 0'
+              }}
             />
           </div>
         )}
@@ -407,13 +416,16 @@ const App = () => {
         </div>
       </footer>
 
-      {/* Monetag Ad - Bottom Banner */}
+      {/* Vignette Banner Ad - Bottom */}
       <div className="bg-gray-100 dark:bg-gray-800 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <MonetagAd 
-            zoneId="9449278" 
-            adType="inpage"
-            adStyle={{ minHeight: '90px' }}
+          <VignetteBannerAd 
+            zoneId="MONETAG_ZONE_3" 
+            className="mobile-monetag-container"
+            adStyle={{ 
+              minHeight: '120px',
+              backgroundColor: 'transparent'
+            }}
           />
         </div>
       </div>
