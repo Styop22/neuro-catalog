@@ -17,9 +17,9 @@ const MonetagScript = () => {
     };
 
     // Загрузка всех зон
-    loadMonetagScript('9449270'); // TopBanner
-    loadMonetagScript('9449276'); // CenterBlock
-    loadMonetagScript('9449279'); // BottomBanner
+    loadMonetagScript('9449269'); // TopBanner
+    loadMonetagScript('9449275'); // CenterBlock
+    loadMonetagScript('9449278'); // BottomBanner
   }, []);
 
   return null;
