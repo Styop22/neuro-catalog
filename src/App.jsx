@@ -367,7 +367,7 @@ const App = () => {
         {filteredData.length > 12 && (
           <div className="my-8">
             <MonetagAd 
-              zoneId="9449270" 
+              zoneId="9449275" 
               adType="vignette"
               adStyle={{ minHeight: '250px' }}
             />
@@ -411,7 +411,7 @@ const App = () => {
       <div className="bg-gray-100 dark:bg-gray-800 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MonetagAd 
-            zoneId="9449271" 
+            zoneId="9449278" 
             adType="vignette"
             adStyle={{ minHeight: '90px' }}
           />
