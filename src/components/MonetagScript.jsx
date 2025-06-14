@@ -9,7 +9,7 @@ const MonetagScript = () => {
       if (!existingScript) {
         const script = document.createElement('script');
         script.async = true;
-        script.src = `https://alwingulla.com/88/tag.min.js`;
+        script.src = `//dicouksa.com/400/${zoneId}`; // ✅ правильный src
         script.setAttribute('data-zone', zoneId);
         script.setAttribute('data-sdk', `show_${zoneId}`);
         document.head.appendChild(script);
@@ -17,7 +17,6 @@ const MonetagScript = () => {
     };
 
     // Load scripts for different ad zones
-    // These zone IDs will be replaced with actual Monetag zone IDs
     loadMonetagScript('9449270'); // TopBanner
     loadMonetagScript('9449276'); // CenterBlock
     loadMonetagScript('9449279'); // BottomBanner
