@@ -5,40 +5,33 @@ const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
   const adRef = React.useRef(null);
 
   React.useEffect(() => {
-    if (adRef.current && zoneId) {
-      const adContainer = adRef.current;
-      adContainer.innerHTML = '';
+    if (!zoneId || !adRef.current) return;
 
-      const tryShowAd = () => {
-        if (typeof window[`show_${zoneId}`] === 'function') {
-          try {
-            window[`show_${zoneId}`]();
-          } catch (e) {
-            console.error(`Ошибка Monetag show_${zoneId}:`, e);
-          }
-        } else {
-          setTimeout(tryShowAd, 300); // ждем загрузки скрипта
+    const adContainer = adRef.current;
+    adContainer.innerHTML = '';
+
+    // Создаём контейнер
+    const adDiv = document.createElement('div');
+    adDiv.id = `monetag-${adType}-${zoneId}`;
+    adDiv.className = `monetag-${adType}-banner`;
+    adDiv.setAttribute('data-zone', zoneId);
+    adContainer.appendChild(adDiv);
+
+    // Пробуем вызвать show_{zoneId}
+    const tryShowAd = () => {
+      const showFn = window[`show_${zoneId}`];
+      if (typeof showFn === 'function') {
+        try {
+          showFn();
+        } catch (e) {
+          console.error(`Monetag error in show_${zoneId}:`, e);
         }
-      };
-
-      if (adType === 'vignette') {
-        const vignetteDiv = document.createElement('div');
-        vignetteDiv.id = `monetag-vignette-${zoneId}`;
-        vignetteDiv.className = 'monetag-vignette-banner';
-        vignetteDiv.setAttribute('data-zone', zoneId);
-        adContainer.appendChild(vignetteDiv);
-        tryShowAd();
+      } else {
+        setTimeout(tryShowAd, 300);
       }
+    };
 
-      else if (adType === 'inpage') {
-        const inpageDiv = document.createElement('div');
-        inpageDiv.id = `monetag-inpage-${zoneId}`;
-        inpageDiv.className = 'monetag-inpage-banner';
-        inpageDiv.setAttribute('data-zone', zoneId);
-        adContainer.appendChild(inpageDiv);
-        tryShowAd();
-      }
-    }
+    tryShowAd();
   }, [zoneId, adType]);
 
   return (
@@ -51,10 +44,10 @@ const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
         justifyContent: 'center',
         alignItems: 'center',
         margin: '10px 0',
-        ...adStyle
+        ...adStyle,
       }}
     >
-      {/* Ad will be loaded here */}
+      {/* Monetag Ad loads here */}
     </div>
   );
 };
