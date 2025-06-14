@@ -3,28 +3,26 @@ import React from 'react';
 
 const MonetagScript = () => {
   React.useEffect(() => {
-    // Load Monetag scripts for different ad zones
     const loadMonetagScript = (zoneId) => {
-      const existingScript = document.querySelector(`script[data-zone="${zoneId}"]`);
-      if (!existingScript) {
+      const scriptId = `monetag-script-${zoneId}`;
+      if (!document.getElementById(scriptId)) {
         const script = document.createElement('script');
+        script.id = scriptId;
         script.async = true;
-        script.src = `//dicouksa.com/400/${zoneId}`; // ✅ правильный src
+        script.src = `https://alwingulla.com/88/tag.min.js`; // ✅ официальный рабочий скрипт
         script.setAttribute('data-zone', zoneId);
-        script.setAttribute('data-sdk', `show_${zoneId}`);
+        script.setAttribute('data-cfasync', 'false');
         document.head.appendChild(script);
       }
     };
 
-    // Load scripts for different ad zones
+    // Загрузка всех зон
     loadMonetagScript('9449270'); // TopBanner
     loadMonetagScript('9449276'); // CenterBlock
     loadMonetagScript('9449279'); // BottomBanner
-
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default MonetagScript;
-
