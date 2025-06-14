@@ -127,7 +127,7 @@ const App = () => {
           {/* Monetag Ad - Top Banner */}
           <div className="my-8">
             <MonetagAd 
-              zoneId="MONETAG_ZONE_1" 
+              zoneId="9449269" 
               adType="vignette"
               adStyle={{ minHeight: '90px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
             />
@@ -367,7 +367,7 @@ const App = () => {
         {filteredData.length > 12 && (
           <div className="my-8">
             <MonetagAd 
-              zoneId="MONETAG_ZONE_2" 
+              zoneId="9449270" 
               adType="vignette"
               adStyle={{ minHeight: '250px' }}
             />
@@ -411,7 +411,7 @@ const App = () => {
       <div className="bg-gray-100 dark:bg-gray-800 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MonetagAd 
-            zoneId="MONETAG_ZONE_3" 
+            zoneId="9449271" 
             adType="vignette"
             adStyle={{ minHeight: '90px' }}
           />
