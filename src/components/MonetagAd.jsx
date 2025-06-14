@@ -1,37 +1,18 @@
-// Monetag Ad Component
-import React from 'react';
+// Monetag Ad Component (Fixed)
+import React, { useEffect, useRef } from 'react';
 
-const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
-  const adRef = React.useRef(null);
+const MonetagAd = ({ zoneId, adType = 'inpage', adStyle = {} }) => {
+  const adRef = useRef(null);
 
-  React.useEffect(() => {
-    if (!zoneId || !adRef.current) return;
+  useEffect(() => {
+    if (!zoneId || adType !== 'inpage') return;
 
-    const adContainer = adRef.current;
-    adContainer.innerHTML = '';
-
-    // Создаём контейнер
-    const adDiv = document.createElement('div');
-    adDiv.id = `monetag-${adType}-${zoneId}`;
-    adDiv.className = `monetag-${adType}-banner`;
-    adDiv.setAttribute('data-zone', zoneId);
-    adContainer.appendChild(adDiv);
-
-    // Пробуем вызвать show_{zoneId}
-    const tryShowAd = () => {
-      const showFn = window[`show_${zoneId}`];
-      if (typeof showFn === 'function') {
-        try {
-          showFn();
-        } catch (e) {
-          console.error(`Monetag error in show_${zoneId}:`, e);
-        }
-      } else {
-        setTimeout(tryShowAd, 300);
-      }
-    };
-
-    tryShowAd();
+    const script = document.createElement('script');
+    script.src = `https://baithoph.net/400/${zoneId}`;
+    script.async = true;
+    script.setAttribute('data-zone', zoneId);
+    script.setAttribute('data-cfasync', 'false');
+    adRef.current?.appendChild(script);
   }, [zoneId, adType]);
 
   return (
@@ -40,15 +21,13 @@ const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
       className="monetag-container"
       style={{
         minHeight: '90px',
+        width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '10px 0',
-        ...adStyle,
+        ...adStyle
       }}
-    >
-      {/* Monetag Ad loads here */}
-    </div>
+    />
   );
 };
 
