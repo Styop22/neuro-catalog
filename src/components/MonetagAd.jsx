@@ -9,25 +9,25 @@ const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
       const adContainer = adRef.current;
       adContainer.innerHTML = '';
 
+      const tryShowAd = () => {
+        if (typeof window[`show_${zoneId}`] === 'function') {
+          try {
+            window[`show_${zoneId}`]();
+          } catch (e) {
+            console.error(`Ошибка Monetag show_${zoneId}:`, e);
+          }
+        } else {
+          setTimeout(tryShowAd, 300); // ждем загрузки скрипта
+        }
+      };
+
       if (adType === 'vignette') {
         const vignetteDiv = document.createElement('div');
         vignetteDiv.id = `monetag-vignette-${zoneId}`;
         vignetteDiv.className = 'monetag-vignette-banner';
         vignetteDiv.setAttribute('data-zone', zoneId);
         adContainer.appendChild(vignetteDiv);
-
-        // Delay ad init to wait for script load
-        setTimeout(() => {
-          if (window[`show_${zoneId}`]) {
-            try {
-              window[`show_${zoneId}`]();
-            } catch (e) {
-              console.error('Monetag vignette error:', e);
-            }
-          } else {
-            console.warn(`Monetag show_${zoneId} is not available yet`);
-          }
-        }, 1000); // Wait 1 second for script to load
+        tryShowAd();
       }
 
       else if (adType === 'inpage') {
@@ -36,18 +36,7 @@ const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
         inpageDiv.className = 'monetag-inpage-banner';
         inpageDiv.setAttribute('data-zone', zoneId);
         adContainer.appendChild(inpageDiv);
-
-        setTimeout(() => {
-          if (window[`show_${zoneId}`]) {
-            try {
-              window[`show_${zoneId}`]();
-            } catch (e) {
-              console.error('Monetag in-page error:', e);
-            }
-          } else {
-            console.warn(`Monetag show_${zoneId} is not available yet`);
-          }
-        }, 1000);
+        tryShowAd();
       }
     }
   }, [zoneId, adType]);
@@ -71,4 +60,3 @@ const MonetagAd = ({ zoneId, adType = 'vignette', adStyle = {} }) => {
 };
 
 export default MonetagAd;
-
