@@ -3,12 +3,22 @@ import React, { useEffect } from 'react';
 
 const MonetagScript = () => {
   useEffect(() => {
-    if (document.getElementById('monetag-global-script')) return;
+    // Удалим старый скрипт если есть
+    const existing = document.getElementById('monetag-global-script');
+    if (existing) existing.remove();
 
     const script = document.createElement('script');
     script.id = 'monetag-global-script';
-    script.src = 'https://baithoph.net/tag.min.js'; // 👈 глобальный загрузчик
+    script.src = 'https://baithoph.net/tag.min.js';
     script.async = true;
+
+    script.onload = () => {
+      // Вызываем обработку всех монетаг контейнеров
+      if (window.monetag) {
+        window.monetag.init();
+      }
+    };
+
     document.head.appendChild(script);
   }, []);
 
