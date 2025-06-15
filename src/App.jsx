@@ -6,9 +6,8 @@ import './App.css';
 import neuralNetworksData from './excel_data.json';
 
 // Monetag components
-import MonetagAd from './components/MonetagAd';
-import VignetteBannerAd from './components/VignetteBannerAd';
 import MonetagScript from './components/MonetagScript';
+import AdDelayManager from './components/AdDelayManager';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -124,20 +123,6 @@ const App = () => {
             Ամբողջական հավաքածու 2000+ նեյրոցանցերի և արհեստական բանականության գործիքների՝ 218 կատեգորիայով։ 
             Գտեք ձեր նախագծի համար կատարյալ լուծումը։
           </p>
-          
-          {/* Vignette Banner Ad - Top */}
-          <div className="my-8">
-            <VignetteBannerAd 
-              zoneId="MONETAG_ZONE_1" 
-              className="mobile-monetag-container"
-              adStyle={{ 
-                minHeight: '120px', 
-                backgroundColor: 'rgba(255,255,255,0.1)', 
-                borderRadius: '12px',
-                margin: '1rem 0'
-              }}
-            />
-          </div>
           
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -368,20 +353,6 @@ const App = () => {
             </button>
           </div>
         )}
-
-        {/* Vignette Banner Ad - Middle */}
-        {filteredData.length > 12 && (
-          <div className="my-8">
-            <VignetteBannerAd 
-              zoneId="MONETAG_ZONE_2" 
-              className="mobile-monetag-container"
-              adStyle={{ 
-                minHeight: '120px',
-                margin: '2rem 0'
-              }}
-            />
-          </div>
-        )}
       </main>
 
       {/* Footer */}
@@ -416,22 +387,11 @@ const App = () => {
         </div>
       </footer>
 
-      {/* Vignette Banner Ad - Bottom */}
-      <div className="bg-gray-100 dark:bg-gray-800 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <VignetteBannerAd 
-            zoneId="MONETAG_ZONE_3" 
-            className="mobile-monetag-container"
-            adStyle={{ 
-              minHeight: '120px',
-              backgroundColor: 'transparent'
-            }}
-          />
-        </div>
-      </div>
-
       {/* Load Monetag Script */}
       <MonetagScript />
+      
+      {/* Ad Delay Manager */}
+      <AdDelayManager />
     </div>
   );
 };
