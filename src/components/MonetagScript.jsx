@@ -74,13 +74,13 @@ const MonetagScript = () => {
     if (isMobile()) {
       // На мобильных загружаем с большими интервалами
       loadMonetagAd('9452030', 1000);   // Через 1 секунду
-      loadMonetagAd('MONETAG_ZONE_2', 3000);   // Через 3 секунды  
-      loadMonetagAd('MONETAG_ZONE_3', 5000);   // Через 5 секунд
+      loadMonetagAd('9452237', 3000);   // Через 3 секунды  
+      loadMonetagAd('9452241', 5000);   // Через 5 секунд
     } else {
       // На десктопе как обычно
       loadMonetagAd('9452030', 0);
-      loadMonetagAd('MONETAG_ZONE_2', 2000);
-      loadMonetagAd('MONETAG_ZONE_3', 4000);
+      loadMonetagAd('9452237', 2000);
+      loadMonetagAd('9452241', 4000);
     }
 
     // Основной скрипт Monetag с мобильной оптимизацией
