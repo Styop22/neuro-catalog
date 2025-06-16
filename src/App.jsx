@@ -366,9 +366,9 @@ const App = () => {
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Կապ</h3>
+              <h3 className="text-lg font-semibold mb-4">Հուշում</h3>
               <p className="text-gray-400">
-                Հարցեր կամ առաջարկություններ ունե՞ք։ Կապվեք մեզ հետ։
+                Ամեն գործիքից առավել օգտագործիր՝ համադրելով մի քանիսը։
               </p>
             </div>
             
@@ -382,7 +382,7 @@ const App = () => {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Նեյրոցանցերի Հարթակ։ Բոլոր իրավունքները պաշտպանված են։</p>
+            <p>Մեր նպատակն է՝ խնայել քո ժամանակը և բացել նոր հնարավորություններ։</p>
           </div>
         </div>
       </footer>
