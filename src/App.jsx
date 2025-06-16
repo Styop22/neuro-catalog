@@ -366,12 +366,6 @@ const App = () => {
               </p>
             </div>
             
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Կապ</h3>
-              <p className="text-gray-400">
-                Հարցեր կամ առաջարկություններ ունե՞ք։ Կապվեք մեզ հետ։
-              </p>
-            </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Տեղեկություններ</h3>
