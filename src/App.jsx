@@ -8,6 +8,7 @@ import neuralNetworksData from './excel_data.json';
 // Monetag components
 import MonetagScript from './components/MonetagScript';
 import AdDelayManager from './components/AdDelayManager';
+import MonetagAd from './components/MonetagAd';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
