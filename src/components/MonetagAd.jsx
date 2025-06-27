@@ -1,4 +1,4 @@
-// MonetagAd.jsx (корректный способ отображения inpage рекламы)
+// MonetagAd.jsx
 import React, { useEffect, useRef } from 'react';
 
 const MonetagAd = ({ zoneId, adStyle = {} }) => {
@@ -7,11 +7,12 @@ const MonetagAd = ({ zoneId, adStyle = {} }) => {
   useEffect(() => {
     if (!containerRef.current || !zoneId) return;
 
-    // Очистим перед повторной вставкой
-    containerRef.current.innerHTML = '';
+    const existingScript = document.getElementById(`monetag-${zoneId}`);
+    if (existingScript) return; // Уже вставлен
 
     const script = document.createElement('script');
-    script.src = `https://baithoph.net/400/${zoneId}`;
+    script.id = `monetag-${zoneId}`;
+    script.src = `https://baithoph.net/400/${zoneId}`; // или замени на real Monetag JS
     script.async = true;
     script.setAttribute('data-zone', zoneId);
     script.setAttribute('data-cfasync', 'false');
@@ -27,7 +28,8 @@ const MonetagAd = ({ zoneId, adStyle = {} }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '90px',
+        minHeight: '100px',
+        overflow: 'hidden',
         ...adStyle,
       }}
     />
